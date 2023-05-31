@@ -2,14 +2,20 @@ let loadPhones = async(value) => {
     let url = `https://openapi.programming-hero.com/api/phones?search=${value}`;
     let res = await fetch(url);
     let data = await res.json();
-    displayPhones(data);
+    displayPhones(data.data);
 }
 
 let displayPhones = (phones) => {
     let phonesContainer = document.getElementById("phones-container");
     phonesContainer.innerText = "";
-    phones.data.forEach(phone => {
-        let phoneName = phone.phone_name;
+    let warning = document.getElementById("warning");
+    if (phones.length === 0) {
+        warning.classList.remove("d-none");
+    }
+    else {
+        warning.classList.add("d-none");
+    }
+    phones.forEach(phone => {
         let phoneDiv = document.createElement("div");
         phoneDiv.classList.add("col");
         phoneDiv.innerHTML = `
