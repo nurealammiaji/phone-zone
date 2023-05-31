@@ -6,15 +6,20 @@ let loadPhones = async(value) => {
 }
 
 let displayPhones = (phones) => {
+
+    phones = phones.slice(0, 6);
+
     let phonesContainer = document.getElementById("phones-container");
     phonesContainer.innerText = "";
     let warning = document.getElementById("warning");
+
     if (phones.length === 0) {
         warning.classList.remove("d-none");
     }
     else {
         warning.classList.add("d-none");
     }
+
     phones.forEach(phone => {
         let phoneDiv = document.createElement("div");
         phoneDiv.classList.add("col");
