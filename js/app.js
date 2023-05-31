@@ -9,7 +9,6 @@ let displayPhones = (phones) => {
     let phonesContainer = document.getElementById("phones-container");
     phonesContainer.innerText = "";
     phones.data.forEach(phone => {
-        console.log(phone);
         let phoneName = phone.phone_name;
         let phoneDiv = document.createElement("div");
         phoneDiv.classList.add("col");
