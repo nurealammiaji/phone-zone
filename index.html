@@ -13,14 +13,24 @@
   <header>
     <section class="container">
         <div class="container">
-            <h1>Phone Zone</h1>
+            <div class="d-flex justify-content-between align-content-center my-3">
+                <div>
+                    <h1>Phone Zone</h1>
+                </div>
+                <div>
+                    <div class="input-group my-2">
+                        <input id="search-field" type="text" class="form-control" placeholder="Search Phone" >
+                        <button id="search-button" type="button" class="btn btn-primary" onclick="searchPhone()">Search</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <hr>
     </section>
   </header>
   <main>
     <section>
-        <div class="container">
+        <div class="container my-2">
             <!-- Phones Card -->
             <div id="phones-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             </div>
@@ -28,7 +38,9 @@
     </section>
   </main>
   <footer>
-    <!-- place footer here -->
+    <div class="my-3 text-center">
+      <p>Copyright (c) <a href="#" class="text-decoration-none">Phone Zone</a>, 2023</p>
+    </div>
   </footer>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
