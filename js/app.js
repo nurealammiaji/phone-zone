@@ -34,12 +34,24 @@ let displayPhones = (phones) => {
         </div>
         `;
         phonesContainer.appendChild(phoneDiv);
+        toggleLoader(false);
     })
 }
 
 let searchPhone = () => {
+    toggleLoader(true);
     let searchField = document.getElementById("search-field").value;
     loadPhones(searchField);
 }
 
-loadPhones(value = 'iphone');
+let toggleLoader = isLoading => {
+    let spinner = document.getElementById("spinner");
+    if (isLoading) {
+        spinner.classList.remove("d-none");
+    }
+    else {
+        spinner.classList.add("d-none");
+    }
+}
+
+// loadPhones(value = 'iphone');
