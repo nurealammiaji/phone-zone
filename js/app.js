@@ -6,10 +6,22 @@ let loadPhones = async(value) => {
 }
 
 let displayPhones = (phones) => {
-    phones = phones.slice(0, 6);
+
+    let showAllDiv = document.getElementById("show-all-div");
+
+    if (phones.length > 6) {
+        phones = phones.slice(0, 6);
+        showAllDiv.classList.remove("d-none");
+    }
+    else {
+        showAllDiv.classList.add("d-none");
+    }
+    
     let phonesContainer = document.getElementById("phones-container");
     phonesContainer.innerText = "";
+
     let warning = document.getElementById("warning");
+
     if (phones.length === 0) {
         warning.classList.remove("d-none");
         toggleLoader(false);
@@ -17,6 +29,7 @@ let displayPhones = (phones) => {
     else {
         warning.classList.add("d-none");
     }
+
     phones.forEach(phone => {
         let phoneDiv = document.createElement("div");
         phoneDiv.classList.add("col");
