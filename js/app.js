@@ -1,7 +1,9 @@
 let loadPhones = async(value) => {
+
     let url = `https://openapi.programming-hero.com/api/phones?search=${value}`;
     let res = await fetch(url);
     let data = await res.json();
+
     displayPhones(data.data);
 }
 
@@ -16,7 +18,7 @@ let displayPhones = (phones) => {
     else {
         showAllDiv.classList.add("d-none");
     }
-    
+
     let phonesContainer = document.getElementById("phones-container");
     phonesContainer.innerText = "";
 
@@ -40,6 +42,7 @@ let displayPhones = (phones) => {
                 <h5 class="card-title">${phone.phone_name}</h5>
                 <h6>Brand: ${phone.brand}</h6>
                 <p class="card-text"></p>
+                <button id="btn-details" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetailsModal" onclick="loadDetails('${phone.slug}')">Show Details</button>
             </div>
         </div>
         `;
@@ -55,7 +58,9 @@ let searchPhone = () => {
 }
 
 let toggleLoader = isLoading => {
+
     let spinner = document.getElementById("spinner");
+
     if (isLoading) {
         spinner.classList.remove("d-none");
     }
@@ -63,5 +68,25 @@ let toggleLoader = isLoading => {
         spinner.classList.add("d-none");
     }
 }
+
+let loadDetails = async(id) => {
+
+    let url = `https://openapi.programming-hero.com/api/phone/${id}`;
+    let res = await fetch(url);
+    let data = await res.json();
+
+    displayDetails(data.data);
+}
+
+let displayDetails = (details) => {
+    console.log(details);
+    let modalTitle = document.getElementById("modal-title");
+    modalTitle.innerHTML = `${details.name}`;
+    let modalBody = document.getElementById("modal-body");
+    modalBody.innerHTML = `
+    <p>Release Date: ${details.releaseDate ? details.releaseDate : "Not Found"}</p>
+    `;
+}
+
 
 loadPhones(value = 'iphone');
