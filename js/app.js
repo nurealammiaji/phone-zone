@@ -84,7 +84,9 @@ let displayDetails = (details) => {
     modalTitle.innerHTML = `${details.name}`;
     let modalBody = document.getElementById("modal-body");
     modalBody.innerHTML = `
-    <p>Release Date: ${details.releaseDate ? details.releaseDate : "Not Found"}</p>
+    <p><b>Release Date:</b> ${details.releaseDate ? details.releaseDate : "No Data Found"}</p>
+    <p><b>Storage:</b> ${details.mainFeatures ? details.mainFeatures.storage : "No Data Found"}</p>
+    <p><b>Chipset:</b> ${details.mainFeatures ? details.mainFeatures.chipSet : "No Data Found"}</p>
     `;
 }
 
